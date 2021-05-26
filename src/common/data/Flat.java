@@ -1,5 +1,7 @@
 package common.data;
 
+import common.User;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -17,10 +19,11 @@ public class Flat implements Comparable<Flat>, Serializable {
     private View view; //Поле не может быть null
     private Transport transport; //Поле не может быть null
     private House house; //Поле может быть null
+    private User owner;
 
 
-    public Flat(int id, String name, Coordinates coordinates, java.time.LocalDateTime creationDate, Float area, Integer numberOfRooms, Furnish furnish, View view, Transport transport, House house){
-        this.id=id;               //!!!!!!!!! переопределить equals в run.Coordinates и run.House
+    public Flat(int id, String name, Coordinates coordinates, java.time.LocalDateTime creationDate, Float area, Integer numberOfRooms, Furnish furnish, View view, Transport transport, House house, User owner){
+        this.id=id;
         this.name=name;
         this.coordinates=coordinates;
         this.creationDate=creationDate;
@@ -30,6 +33,10 @@ public class Flat implements Comparable<Flat>, Serializable {
         this.view=view;
         this.transport=transport;
         this.house=house;
+        this.owner=owner;
+    }
+    public void setID(int ID){
+        this.id=ID;
     }
     /**
      * @return ID квартиры
@@ -93,6 +100,9 @@ public class Flat implements Comparable<Flat>, Serializable {
      */
     public House getHouse(){
         return house;
+    }
+    public User getOwner() {
+        return owner;
     }
     @Override
     public int compareTo(Flat f) {

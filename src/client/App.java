@@ -1,6 +1,7 @@
 package client;
 
 import client.utility.AuthManager;
+import client.utility.Clientt;
 import client.utility.Console;
 import client.utility.Creator;
 
@@ -25,7 +26,7 @@ public class App {
         Creator creator=new Creator(in);
         AuthManager authManager = new AuthManager(in);
         Console console = new Console(in,creator, authManager);
-        Client client = new Client("localhost", port, console, authManager);
+        Clientt client = new Clientt("localhost", port, console, authManager);
         client.run();
         scanner.close();
     }

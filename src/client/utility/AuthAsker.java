@@ -32,8 +32,8 @@ public class AuthAsker {
             try{
                 System.out.println("Введите пароль");
                 Console console = System.console();
-                char [] c = console.readPassword();
-                password = String.copyValueOf(c);
+                //char [] c = console.readPassword();
+                password ="1234";//String.copyValueOf(c);
                 if (password.equals("")) throw new IncorrectValueException();
                 break;
 

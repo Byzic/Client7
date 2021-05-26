@@ -89,8 +89,8 @@ public class Console {
             try {
                 switch (typeOfCommand) {
                     case OBJECT:
-                        Flat flat = creator.create(Integer.parseInt(userCommand[1]));
-                        return new Request(userCommand[0], userCommand[1], flat,user);
+                        Flat flat = creator.create(Integer.parseInt(userCommand[1]),user);
+                        return new Request(userCommand[0], userCommand[1],flat,user);
                     case SCRIPT:
                         File scriptFile = new File(userCommand[1]);
                         //System.out.println(scriptFileNames);

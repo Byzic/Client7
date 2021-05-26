@@ -28,6 +28,9 @@ public class Coordinates implements Serializable {
     public Float getY() {
         return y;
     }
+    public String tostring(){
+        return x+" "+y;
+    }
 
     @Override
     public String toString() {

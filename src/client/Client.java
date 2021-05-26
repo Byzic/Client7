@@ -75,6 +75,7 @@ public class Client {
                 requestToServer = authManager.handle();//формиркем запрос на сервер с зависимости от того, есть пароль и логин у клиента
                 if (requestToServer.isEmpty()) continue;
                 serverWriter.writeObject(requestToServer);
+                System.out.println("Запрос отправился");
                 serverResponse = (Response) serverReader.readObject();
                 System.out.println(serverResponse.getResponseBody());
             } catch (InvalidClassException | NotSerializableException exception) {

@@ -1,5 +1,6 @@
 package client.utility;
 
+import common.User;
 import common.data.*;
 import exceptions.IncorrectValueException;
 
@@ -13,6 +14,7 @@ import java.util.Scanner;
 public class Creator {
     private boolean t=true;
     private Scanner scanner;
+
     public Creator(Scanner scanner){
         this.scanner=scanner;
     }
@@ -35,8 +37,8 @@ public class Creator {
      * Узнает имя владельца квартиры
      * @return Имя пользователя
      */
-    public Flat create(int id){
-        return new Flat(id,newName(), newCoordinates(),  LocalDateTime.now(), newArea(),newNumberOfRooms(),newFurnish(),newView(),newTransport(),newHouse());
+    public Flat create(int id,User user){
+        return new Flat(id,newName(), newCoordinates(),  LocalDateTime.now(), newArea(),newNumberOfRooms(),newFurnish(),newView(),newTransport(),newHouse(),user);
     }
     private String newName(){
         t=true;
@@ -216,23 +218,26 @@ public class Creator {
      * @return Дом
      */
     private House newHouse(){
-        boolean t=true;
+        t=true;
+
+
         do {
-            System.out.println("Хотите указать информацию о доме?(да/нет)");
+            System.out.println("Хотите указать информацию о доме?(+/-)");
             String read = scanner.nextLine().trim().toLowerCase();
-            if (read.equals("да")) {
+            if (read.equals("+")) {
                 t=false;
                 String name = nameHouse();
                 Long year = yearHouse();
                 Long numberOfFloors = floorsHouse();
                 return new House(name, year, numberOfFloors);
-            } else if (read.equals("нет")) {
+            } else if (read.equals("-")) {
                 t=false;
                 return null;
             }
-            System.err.println("Необходимо ввести \"да\" или \"нет\"");
+            System.err.println("Необходимо ввести \"+\" или \"-\"");
         }while (t);
         return null;
+
 
     }
 

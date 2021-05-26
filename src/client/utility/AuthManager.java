@@ -15,7 +15,7 @@ public class AuthManager {
     public Request handle() {
         AuthAsker authAsker = new AuthAsker(scanner);
         String command = authAsker.askQuestion("У вас уже есть учетная запись?") ? loginCommand : registerCommand;
-        User user = new User(authAsker.askLogin(), authAsker.askPassword());
+        User user = new User(authAsker.askLogin(), PasswordHasher.hashPassword(authAsker.askPassword()+"!!!(*_*)!!!"));
         return new Request(command, "", user);
     }
 
